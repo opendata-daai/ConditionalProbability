@@ -1,0 +1,34 @@
+﻿Use cases for the Data Science
+
+
+Sensor Diagnostic Data
+
+Data is collected from users using AC which is connected to the company’s cloud and is stored within a database. Whenever the user’s AC is connected to the internet through IoT the data from the sensors are cached and sent at a certain frequency or whenever the user performs any controls. 
+All the features with their timestamp and device Id is stored. As data is collected from many users at different points of time with possibly missing values it is important to clean the data and bring it to a format that will be helpful for our analysis. 
+
+Problem Statement:
+
+We have a one day (24 hr) AC diagnostic data with the columns:
+	
+    1. deviceId,Room_set_temp,User_set_temp,Faults,Operating_hr_seconds, time_stamp_seconds
+    2. Do read the parquet files do not convert to csv.
+    3. Perform EDA on that full dataset and share any userful insights.
+    4. Creation of sessions on the basis of ON/OFF stage based on the device Ids and the operating hours.If operating hours is in  constant then the device is in OFF stage.
+    5. If the device is getting ON after 30 mins it should be considered as new sessions.
+    6. In the column ‘time_stamp_seconds’ if there is a gap more than 30 mins in the same deviceids with the operating hours it will be a new sessions.
+    7. The sessions nomenclature should be the combination of deviceIds & min time_stamp_seconds within the session.
+    8. The range of Room set temperature is  & -10 to 50 (Max 60). Add 60 if you get the data in this range then it is fine or else drop the data.
+    9. The range of User set temperature is 16 to 30.
+    10. You need find the conditional probability like based on the room set temperature what is the probability of user seeting the temperautre.
+    11. How do you identify or group similiar users usign ML based on common behaviours exhibited by the users.
+    12. Store the results in Parquet format.
+
+Points to note:
+
+    • Each ‘time_stamp_seconds’ is of 5 mins. If you find the gap of more than 30 mins within the same deviceId and the operating hours then that will be considered as the new sessions.
+    • Operating_hr_seconds & time_stamp_seconds are in UTC time stamp. It will generated in the cloud in every 5 mins or in hourly basis.
+    • behaviour analysis means how various users are perfoming similiar operation around same timeframe  or share common preferences like temperatures (ex) user preferring cold temperatures like 18C or users preferring warm like 26C etc
+    • offline definition: the device is considered offline when there are no successive controls (use lastcommand field) for a period of 12 hrs 
+    • The candidate is expected to use pyspark/python/dask to handle the above and choice of ML algorithms (if required) is left to the candidate.
+    • We expect the candidate to take a couple of days or so and then share the finished code/jupyter notebook/etc and appear for a 30-45 mins discussion to go over his/her findings.
+
