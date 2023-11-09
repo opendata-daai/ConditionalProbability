@@ -23,6 +23,7 @@ We have a one day (24 hr) AC diagnostic data with the columns:
     10. You need find the conditional probability like based on the room set temperature what is the probability of user seeting the temperautre.
     11. How do you identify or group similiar users usign ML based on common behaviours exhibited by the users.
     12. Store the results in Parquet format.
+    13. find how many sessions on avarage each AC ran. can you describe the sessions of ACs.
 
 Points to note:
 
