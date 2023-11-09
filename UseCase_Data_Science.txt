@@ -14,8 +14,9 @@ We have a one day (24 hr) AC diagnostic data with the columns:
     2. Do read the parquet files do not convert to csv.
     3. Perform EDA on that full dataset and share any userful insights.
     4. Creation of sessions on the basis of ON/OFF stage based on the device Ids and the operating hours.If operating hours is in  constant then the device is in OFF stage.
-    5. If the device is getting ON after 30 mins it should be considered as new sessions.
-    6. In the column ‘time_stamp_seconds’ if there is a gap more than 30 mins in the same deviceids with the operating hours it will be a new sessions.
+
+    5. In the column ‘time_stamp_seconds’, if there is a gap more than 30 mins in the same deviceids , it will be a new sessions.
+    6. If the device operating hours increasing and timestamp gap is within 30 min, then this ac is ON.
     7. The sessions nomenclature should be the combination of deviceIds & min time_stamp_seconds within the session.
     8. The range of Room set temperature is  & -10 to 50 (Max 60). Add 60 if you get the data in this range then it is fine or else drop the data.
     9. The range of User set temperature is 16 to 30.
